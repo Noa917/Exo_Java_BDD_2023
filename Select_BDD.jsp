@@ -145,5 +145,37 @@
 <h2>Exercice 4 : La valeur maximum</h2>
 <p>Créer un formulaire pour saisir un nouveau film dans la base de données</p>
 
+<form action="#" method="post">
+    <label for="filmTitre">Titre du film : </label>
+    <input type="text" id="filmTitre" name="titre">
+    <label for="filmAnnee">Année de sortie : </label>
+    <input type="text" id="filmAnnee" name="annee">
+    <input type="submit" value="Ajouter le film">
+</form>
+
+
+<%
+    String titre = request.getParameter("titre");
+    String anneeAjout = request.getParameter("annee");
+
+    if (titre != null && anneeAjout != null) {
+        conn = DriverManager.getConnection(url, user, password);
+        String createSQL  = "INSERT INTO Film ( titre, année) VALUES (?, ?)";
+        PreparedStatement createStmt  = conn.prepareStatement(createSQL);
+        createStmt.setString(1, titre);
+        createStmt.setInt(2, Integer.parseInt(anneeAjout));
+
+        int rowsCreated = createStmt.executeUpdate();
+
+        if (rowsCreated > 0) {
+            out.println("<p>Ajout du film réussie.</p>");
+        } else {
+            out.println("<p>Erreur aucun ajout effectué.</p>");
+        }
+
+        createStmt.close();
+    }
+%>
+
 </body>
 </html>
