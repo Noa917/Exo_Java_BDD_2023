@@ -33,14 +33,45 @@
 <h2>Exercice 1 : Comparaison 1</h2>
 <p>Ecrire un programme qui demande à l'utilisateur de saisir 3 valeurs (des chiffres),</br>
 A, B et C et dites nous si la valeur de C est comprise entre A et B.</br>
-Exemple :</br>
-A = 10</br>
-B = 20</br>
-C = 15</br>
-Oui C est compris entre A et B</p>
+
+    <p>A = <%= intValeur1 %></p>
+    <p>B = <%= intValeur2 %></p>
+    <p>C = <%= intValeur3 %></p>
+
+<% if (intValeur1 < intValeur3 && intValeur3 < intValeur2) { %>
+
+    <p> Oui C est compris entre A et B</p>
+<% } else { %>
+    <p> Non C n'est pas compris entre A et B</p>
+<% } %>
 
 <h2>Exercice 2 : Pair ou Impair ?</h2>
 <p>Écrivez un programme pour vérifier si un nombre est pair ou impair en utilisant une structure if</p>
+<% int modulo1 = intValeur1 % 2; %>
+<% int modulo2 = intValeur2 % 2; %>
+<% int modulo3 = intValeur3 % 2; %>
+
+<p>A = <%= intValeur1 %></p>
+<p>B = <%= intValeur2 %></p>
+<p>C = <%= intValeur3 %></p>
+
+<% if (modulo1 == 0) { %>
+    <p>A est pair</p>
+<% } else { %>
+    <p>A est impair</p>
+<% } %>
+
+<% if (modulo2 == 0) { %>
+    <p>B est pair</p>
+<% } else { %>
+    <p>B est impair</p>
+<% } %>
+
+<% if (modulo3 == 0) { %>
+    <p>C est pair</p>
+<% } else { %>
+    <p>C est impair</p>
+<% } %>
 
 <% } %>
 <p><a href="index.html">Retour au sommaire</a></p>
